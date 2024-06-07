@@ -1,23 +1,6 @@
-#IMPORT SECTION!
-from time import sleep
+# Import section
 import Module.Mfunc as M
 
-# #PRINT COMMENT SECTION!
-# print("!Before you start with the calculations,READ THIS!\n\
-# For understanding this program you need to atleast know about Matrix's and Determinant's!\n\
-# I made this program Imagining this structure in mind:\n\
-#             \t[  a11    a12    a13\n\
-#             \t   a21    a22    a23\n\
-#             \t   a31    a32    a33  ]\n\
-#             \t\t  AND\n\
-#             \t[  b11    b12    b13\n\
-#             \t   b21    b22    b23\n\
-#             \t   b31    b32    b33  ]\n\
-# Which limits at 3 by 3,if u put input of the order above that,it will exit itself!")
-
-# #FOR DELAY!
-# sleep(5)
-# print("Now you can start if you understand what this is:")
 a=input("Enter \"Y\" to start!:")
 
 #__main__
@@ -30,12 +13,12 @@ def __main__():
         print("5)Minor")
         print("6)Cofactor")
         print("7)Adjoint")
-        print("8)Symmetric")
-        print("9)Skew Symmetric")
-        print("10)Determinant") 
-        print("11)Inverse")
-        print("12)Exit")
+        print("8)Determinant") 
+        print("9)Inverse")
+        print("10)Exit")
+
         o2=input("\nEnter your option:")
+
         if o2=="1" or o2.lower()=="1)addition" or o2.lower()=="addition":
             print("\nType 'm' by 'n' order of your Matrix: ")
             m1, n1 = int(input("m:")), int(input("n:"))
@@ -73,28 +56,20 @@ def __main__():
             m1, n1 = int(input("m:")), int(input("n:"))
             M.out(M.ADJ(M.inp(m1, n1)))
 
-        elif o2=="8" or o2.lower()=="8)symmetric" or o2.lower()=="symmetric":
-            print("\nType 'm' by 'n' order of your Matrix: ")
-            m1, n1 = int(input("m:")), int(input("n:"))
-            M.out(M.SYM(M.inp(m1, n1)))
-
-        elif o2=="9"or o2.lower()=="9)skew symmetric" or o2.lower()=="skew symmetric":
-            print("\nType 'm' by 'n' order of your Matrix: ")
-            m1, n1 = int(input("m:")), int(input("n:"))
-            M.out(M.SKE(M.inp(m1, n1)))
-
-        elif o2=="10" or o2.lower()=="10)determinant" or o2.lower()=="determinant":
+        elif o2=="8" or o2.lower()=="8)determinant" or o2.lower()=="determinant":
             print("\nType 'm' by 'n' order of your Matrix: ")
             m1, n1 = int(input("m:")), int(input("n:"))
             M.out(M.DET(M.inp(m1, n1)))
 
-        elif o2=="11" or o2.lower()=="11)inverse" or o2.lower()=="inverse":
+        elif o2=="9" or o2.lower()=="9)inverse" or o2.lower()=="inverse":
             print("\nType 'm' by 'n' order of your Matrix: ")
             m1, n1 = int(input("m:")), int(input("n:"))
-            M.out(M.INV(M.inp(m1, n1)))
-
-        elif o2=="12" or o2.lower()=="12)exit" or o2.lower()=="exit":
-            print("\nSUCCESSFULLY EXITED!")
+            try:
+                M.out(M.INV(M.inp(m1, n1)))
+            except ZeroDivisionError as e:
+                print(e)
+            
+        elif o2=="10" or o2.lower()=="10)exit" or o2.lower()=="exit":
             break
         else:
             print("\nInvalid Input!\n")
@@ -104,6 +79,5 @@ if a.lower()=="y":
     try:
         __main__()
     except:
-        print("\n!ERROR!","INVALID INPUT","EXITED")
-else:
-    print("\nExited!\n")
+        print("\n-- ERROR --")
+print("\nEXITED!")
